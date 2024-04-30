@@ -4,15 +4,16 @@ import { Dialog } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import Image from "next/image";
 import Link from "next/link";
-// import Logo from "../../app/assets/ai-logo.png";
+import Logo from "../../app/assets/dev-blog-logo-trans.png";
 // import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 
 const navigation = [
   { name: "Home", href: "/" },
-  { name: "Ask", href: "/Ask" },
-  { name: "Prompts", href: "/Prompt" },
-  { name: "Paraphrase", href: "/Paraphrase" },
-  { name: "Summarize", href: "/Summarize" },
+  { name: "Articles", href: "/Articles" },
+  { name: "About", href: "/About" },
+  { name: "Github", href: "https://github.com/anasyakubu", target: "_blank" },
+  { name: "Feedbacks", href: "/Feedbacks" },
+  { name: "Account", href: "/Account" },
   // { name: "Contact", href: "#" },
 ];
 
@@ -29,8 +30,8 @@ export default function Nav() {
           <div className="flex lg:flex-1">
             <a href="#" className="-m-1.5 p-1.5">
               <span className="sr-only">Your Company</span>
-              {/* <Image className="h-16 w-auto" src={Logo} alt="Logo" /> */}
-              Dev Blog
+              <Image className="h-16 w-auto" src={Logo} alt="Logo" />
+              {/* Dev Blog */}
             </a>
           </div>
           <div className="flex lg:hidden">
@@ -77,8 +78,8 @@ export default function Nav() {
             <div className="flex items-center justify-between">
               <a href="#" className="-m-1.5 p-1.5">
                 <span className="sr-only">Your Company</span>
-                {/* <Image className="h-12 w-auto" src={Logo} alt="Logo" /> */}
-                Dev Blog
+                <Image className="h-12 w-auto" src={Logo} alt="Logo" />
+                {/* Dev Blog */}
               </a>
               <button
                 type="button"
