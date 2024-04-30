@@ -14,7 +14,7 @@ const HomeHeader = () => {
         <div className="">
           <h6 className="text-[#2563EB] text-2xl font-bold">Blog</h6>
         </div>
-        <div className="my-10 p-6 border border-b shadow-lg rounded-2xl bg-white">
+        <div className="my-10 p-6 border shadow-lg rounded-xl bg-white">
           <div className="space-y-2 lg:grid lg:grid-cols-2 lg:gap-x-6 lg:space-y-0">
             {/* text */}
             <div className="">
@@ -40,7 +40,7 @@ const HomeHeader = () => {
                   interoperability, and a lot more.
                 </p>
                 <div className="mt-10">
-                  <Button>Read More</Button>
+                  <Button>Learn More</Button>
                 </div>
               </div>
             </div>
