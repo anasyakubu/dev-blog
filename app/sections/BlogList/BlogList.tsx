@@ -1,20 +1,22 @@
 import React from "react";
-import "./RecentBlogs.scss";
-import RecentBlogCard from "../../../components/shared/RecentBlogCard";
+import "./BlogList.scss";
+import BlogListCard from "../../../components/shared/BlogListCard";
 import { Button } from "../../../components/ui/button";
 import Link from "next/link";
 
-const RecentBlogs = () => {
+const BlogList = () => {
   return (
-    <div className="RecentBlogs">
+    <div className="BlogList">
       <div className="p-20 lg:py-10">
         <div className="">
-          <h6 className="text-[#2563EB] text-2xl font-bold">Recent Blogs</h6>
+          <h6 className="text-[#2563EB] text-2xl font-bold">All Post</h6>
         </div>
         <div className="mt-10">
-          <RecentBlogCard />
-          <RecentBlogCard />
-          <RecentBlogCard />
+          <BlogListCard />
+          <BlogListCard />
+          <BlogListCard />
+          <BlogListCard />
+          <BlogListCard />
         </div>
         <div className="mt-20 flex justify-center">
           <Button>
@@ -26,4 +28,4 @@ const RecentBlogs = () => {
   );
 };
 
-export default RecentBlogs;
+export default BlogList;

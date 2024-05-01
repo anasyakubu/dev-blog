@@ -2,7 +2,7 @@ import React from "react";
 import "./HomeHeader.scss";
 import Nav from "../../../components/shared/Nav";
 import Banner from "../../assets/Banner-1.svg";
-import User from "../../assets/user-1.jpg";
+import User from "../../assets/dev-blog-logo-trans.png";
 import Image from "next/image";
 import { Button } from "../../../components/ui/button";
 
@@ -40,7 +40,7 @@ const HomeHeader = () => {
                   interoperability, and a lot more.
                 </p>
                 <div className="mt-10">
-                  <Button>Learn More</Button>
+                  <Button>Create an Article</Button>
                 </div>
               </div>
             </div>
