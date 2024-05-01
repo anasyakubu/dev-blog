@@ -3,6 +3,7 @@ import { Button } from "../ui/button";
 import Image from "next/image";
 import BlogImage from "../../app/assets/starter-code.png";
 import User from "../../app/assets/user-1.jpg";
+import Link from "next/link";
 
 const RecentBlogCard = () => {
   return (
@@ -12,23 +13,32 @@ const RecentBlogCard = () => {
           {/* Text */}
           <div className="">
             <div className="">
-              <h6 className="text-sm font-bold text-[#2563EB]">Engineering</h6>
+              <h6 className="text-sm font-bold text-[#2563EB]">
+                <Link href="/">Engineering</Link>
+              </h6>
               <h2 className="mt-5 text-black font-extrabold text-2xl">
-                Shepherd: How Stripe adapted Chronon to scale ML feature
-                development
+                <Link href="/">
+                  Shepherd: How Stripe adapted Chronon to scale ML feature
+                  development
+                </Link>
               </h2>
 
               <p className="mt-10 text-sm">
-                Today, the most innovative changes in marketplaces are about
-                providing more value to sellers. Many of them hinge on the kind
-                of financial infrastructure Stripe provides. We’ve found leading
-                marketplaces increasingly ask us to support them with three main
-                types of incentives for sellers: access to a global customer
-                base, an easy onboarding experience, and financial tools like
-                loans and spend cards available in the marketplace dashboard.
+                <Link href="/">
+                  Today, the most innovative changes in marketplaces are about
+                  providing more value to sellers. Many of them hinge on the
+                  kind of financial infrastructure Stripe provides. We’ve found
+                  leading marketplaces increasingly ask us to support them with
+                  three main types of incentives for sellers: access to a global
+                  customer base, an easy onboarding experience, and financial
+                  tools like loans and spend cards available in the marketplace
+                  dashboard.
+                </Link>
               </p>
               <div className="mt-10">
-                <Button>Read More</Button>
+                <Button>
+                  <Link href="/">Read More</Link>
+                </Button>
               </div>
             </div>
           </div>
@@ -44,8 +54,10 @@ const RecentBlogCard = () => {
                   alt="User"
                 />
                 <span className="text-md font-bold">
-                  Anas Yakubu <br />{" "}
-                  <span className="font-light">Software Engineer</span>
+                  <Link href="/">
+                    Anas Yakubu <br />{" "}
+                    <span className="font-light">Software Engineer</span>
+                  </Link>
                 </span>
               </div>
             </div>
