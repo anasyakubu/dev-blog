@@ -14,7 +14,7 @@ import { Pagination } from "swiper/modules";
 import { Button } from "../../ui/button";
 import Link from "next/link";
 
-export default function HighlightSlides() {
+export default function HighlightSlides({ id }: any) {
   const [slidesPerView, setSlidesPerView] = useState(1);
 
   useEffect(() => {
@@ -65,7 +65,7 @@ export default function HighlightSlides() {
             </p>
             <div className="mt-5">
               <Button className="text-sm">
-                <Link href="/">Learn More</Link>
+                <Link href={`/Highlights/${id}`}>Learn More</Link>
               </Button>
             </div>
           </div>
@@ -83,7 +83,7 @@ export default function HighlightSlides() {
           </p>
           <div className="mt-5">
             <Button className="text-sm">
-              <Link href="/">Learn More</Link>
+              <Link href={`/Highlights/${id}`}>Learn More</Link>
             </Button>
           </div>
         </SwiperSlide>
@@ -100,7 +100,7 @@ export default function HighlightSlides() {
           </p>
           <div className="mt-5">
             <Button className="text-sm">
-              <Link href="/">Learn More</Link>
+              <Link href={`/Highlights/${id}`}>Learn More</Link>
             </Button>
           </div>
         </SwiperSlide>
@@ -117,7 +117,7 @@ export default function HighlightSlides() {
           </p>
           <div className="mt-5">
             <Button className="text-sm">
-              <Link href="/">Learn More</Link>
+              <Link href={`/Highlights/${id}`}>Learn More</Link>
             </Button>
           </div>
         </SwiperSlide>
@@ -134,7 +134,7 @@ export default function HighlightSlides() {
           </p>
           <div className="mt-5">
             <Button className="text-sm">
-              <Link href="/">Learn More</Link>
+              <Link href={`/Highlights/${id}`}>Learn More</Link>
             </Button>
           </div>
         </SwiperSlide>
@@ -151,7 +151,7 @@ export default function HighlightSlides() {
           </p>
           <div className="mt-5">
             <Button className="text-sm">
-              <Link href="/">Learn More</Link>
+              <Link href={`/Highlights/${id}`}>Learn More</Link>
             </Button>
           </div>
         </SwiperSlide>
@@ -168,7 +168,7 @@ export default function HighlightSlides() {
           </p>
           <div className="mt-5">
             <Button className="text-sm">
-              <Link href="/">Learn More</Link>
+              <Link href={`/Highlights/${id}`}>Learn More</Link>
             </Button>
           </div>
         </SwiperSlide>
@@ -185,7 +185,7 @@ export default function HighlightSlides() {
           </p>
           <div className="mt-5">
             <Button className="text-sm">
-              <Link href="/">Learn More</Link>
+              <Link href={`/Highlights/${id}`}>Learn More</Link>
             </Button>
           </div>
         </SwiperSlide>
@@ -202,7 +202,7 @@ export default function HighlightSlides() {
           </p>
           <div className="mt-5">
             <Button className="text-sm">
-              <Link href="/">Learn More</Link>
+              <Link href={`/Highlights/${id}`}>Learn More</Link>
             </Button>
           </div>
         </SwiperSlide>
@@ -219,7 +219,7 @@ export default function HighlightSlides() {
           </p>
           <div className="mt-5">
             <Button className="text-sm">
-              <Link href="/">Learn More</Link>
+              <Link href={`/Highlights/${id}`}>Learn More</Link>
             </Button>
           </div>
         </SwiperSlide>

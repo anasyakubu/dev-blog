@@ -5,7 +5,7 @@ import BlogImage from "../../app/assets/starter-code.png";
 import User from "../../app/assets/user-1.jpg";
 import Link from "next/link";
 
-const BlogListCard = () => {
+const BlogListCard = ({ id }: any) => {
   return (
     <div className="BlogListCard">
       <div className="mt-20">
@@ -14,17 +14,17 @@ const BlogListCard = () => {
           <div className="">
             <div className="">
               <h6 className="text-sm font-bold text-[#2563EB]">
-                <Link href="/">Engineering</Link>
+                <Link href={`/Articles/${id}`}>Engineering</Link>
               </h6>
               <h2 className="mt-5 text-black font-extrabold text-2xl">
-                <Link href="/">
+                <Link href={`/Articles/${id}`}>
                   Shepherd: How Stripe adapted Chronon to scale ML feature
                   development
                 </Link>
               </h2>
 
               <p className="mt-10 text-sm">
-                <Link href="/">
+                <Link href={`/Articles/${id}`}>
                   Today, the most innovative changes in marketplaces are about
                   providing more value to sellers. Many of them hinge on the
                   kind of financial infrastructure Stripe provides. We’ve found
@@ -37,7 +37,7 @@ const BlogListCard = () => {
               </p>
               <div className="mt-10">
                 <Button>
-                  <Link href="/">Read More</Link>
+                  <Link href={`/Articles/${id}`}>Read More</Link>
                 </Button>
               </div>
             </div>
@@ -54,7 +54,7 @@ const BlogListCard = () => {
                   alt="User"
                 />
                 <span className="text-md font-bold">
-                  <Link href="/">
+                  <Link href={`/Articles/${id}`}>
                     Anas Yakubu <br />{" "}
                     <span className="font-light">Software Engineer</span>
                   </Link>
