@@ -14,7 +14,7 @@ const navigation = [
   { name: "Github", href: "https://github.com/anasyakubu", target: "_blank" },
   { name: "Feedbacks", href: "/Feedbacks" },
   { name: "Account", href: "/Account" },
-  { name: "Create Post", href: "/Account" },
+  { name: "Create Post", href: "/Articles/Create" },
   // { name: "Contact", href: "#" },
 ];
 
