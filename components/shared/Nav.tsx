@@ -10,10 +10,11 @@ import Logo from "../../app/assets/dev-blog-logo-trans.png";
 const navigation = [
   { name: "Home", href: "/" },
   { name: "Articles", href: "/Articles" },
-  { name: "Highlights", href: "/Highlights" },
+  // { name: "Highlights", href: "/Highlights" },
   { name: "Github", href: "https://github.com/anasyakubu", target: "_blank" },
   { name: "Feedbacks", href: "/Feedbacks" },
   { name: "Account", href: "/Account" },
+  { name: "Create Post", href: "/Account" },
   // { name: "Contact", href: "#" },
 ];
 
