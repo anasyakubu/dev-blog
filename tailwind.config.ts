@@ -3,11 +3,6 @@ import { withUt } from "uploadthing/tw";
 
 // const { withUt } = require("uploadthing/tw");
 
-export default withUt({
-  // Your existing Tailwind config
-  content: ["./src/**/*.{ts,tsx,mdx}"],
-});
-
 import type { Config } from "tailwindcss";
 
 const config = {
