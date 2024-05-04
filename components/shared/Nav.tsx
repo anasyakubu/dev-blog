@@ -6,6 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Logo from "../../app/assets/dev-blog-logo-trans.png";
 // import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
+import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 
 const navigation = [
   { name: "Home", href: "/" },
@@ -57,15 +58,15 @@ export default function Nav() {
             ))}
           </div>
           <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-            {/* <UserButton afterSignOutUrl="/" />
-            <SignedOut> */}
-            <a
-              href="sign-in"
-              className="text-sm font-semibold leading-6 text-gray-900"
-            >
-              Log in <span aria-hidden="true">&rarr;</span>
-            </a>
-            {/* </SignedOut> */}
+            <UserButton afterSignOutUrl="/" />
+            <SignedOut>
+              <a
+                href="sign-in"
+                className="text-sm font-semibold leading-6 text-gray-900"
+              >
+                Log in <span aria-hidden="true">&rarr;</span>
+              </a>
+            </SignedOut>
           </div>
         </nav>
         <Dialog
@@ -105,16 +106,16 @@ export default function Nav() {
                   ))}
                 </div>
                 <div className="py-6">
-                  {/* <SignedOut> */}
-                  <a
-                    href="sign-in"
-                    className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-                  >
-                    Log in
-                  </a>
-                  {/* </SignedOut> */}
+                  <SignedOut>
+                    <a
+                      href="sign-in"
+                      className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                    >
+                      Log in
+                    </a>
+                  </SignedOut>
 
-                  {/* <UserButton afterSignOutUrl="/" /> */}
+                  <UserButton afterSignOutUrl="/" />
                 </div>
               </div>
             </div>
