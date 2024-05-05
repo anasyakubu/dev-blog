@@ -4,6 +4,7 @@ import { AiFillLike } from "react-icons/ai";
 import { FaComments } from "react-icons/fa";
 import Link from "next/link";
 import "./Connected.scss";
+import { SubscribeButton } from "../../../components/shared/Subscribe";
 
 const Connected = () => {
   return (
@@ -16,7 +17,8 @@ const Connected = () => {
               Subscribe to receive new blog posts from Dev Blog in your Email .
             </p>
             <div className="mt-10">
-              <Button>Subscribe to Notifications</Button>
+              {/* <Button>Subscribe to Notifications</Button> */}
+              <SubscribeButton />
             </div>
           </div>
           <div className="pt-10">

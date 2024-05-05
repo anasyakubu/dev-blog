@@ -34,22 +34,35 @@ export const connect = async () => {
 
 // import mongoose from "mongoose";
 
-// const MONGODB_URL = process.env.MONGODB_URL;
-// let cached = (global as any).mongoose || { conn: null, promise: null };
+// const connection = {};
 
-// export const connectToDatabase = async () => {
-//   if (cached.conn) return cached.conn;
+// async function connect() {
+//   if (connection.isConnected) {
+//     return;
+//   }
+//   if (mongoose.connections.length > 0) {
+//     connection.isConnected = mongoose.connections[0].readyState;
+//     if (connection.isConnected === 1) {
+//       return;
+//     }
+//     await mongoose.disconnect();
+//   }
+//   const db = await mongoose.connect(process.env.MONGO_URL, {
+//     dbName: "dev-blog", // Set the database name here
+//     bufferCommands: false,
+//     connectTimeoutMS: 30000,
+//   });
+//   connection.isConnected = db.connections[0].readyState;
+// }
 
-//   if (!MONGODB_URL) throw new Error("MONGODB_URL is Missing");
+// async function disconnect() {
+//   if (connection.isConnected) {
+//     if (process.env.NODE_ENV === "production") {
+//       await mongoose.disconnect();
+//       connection.isConnected = false;
+//     }
+//   }
+// }
 
-//   cached.promise =
-//     cached.promise ||
-//     mongoose.connect(MONGODB_URL, {
-//       dbName: "evently",
-//       bufferCommands: false,
-//     });
-
-//   cached.conn = await cached.promise;
-
-//   return cached.conn;
-// };
+// const db = { connect, disconnect };
+// export default db;

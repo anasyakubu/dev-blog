@@ -26,7 +26,8 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "lib/actions/subscribers.action.js"
+    "lib/actions/subscribers.action.js",
+    "lib/db.ts"
   ],
   "exclude": ["node_modules"]
 }
