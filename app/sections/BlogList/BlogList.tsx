@@ -3,6 +3,7 @@ import "./BlogList.scss";
 import BlogListCard from "../../../components/shared/BlogListCard";
 import { Button } from "../../../components/ui/button";
 import Link from "next/link";
+import "./BlogList.scss";
 
 const BlogList = () => {
   return (
