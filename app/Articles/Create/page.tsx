@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import "./page.scss";
 import Nav from "../../../components/shared/Nav";
 import { UploadDropzone } from "../../../utils/uploadthing";
+import FileUpload from "@/components/shared/FileUpload";
 
 const Create = () => {
   const [imageUrl, setImageUrl] = useState<string>("");
@@ -13,12 +14,10 @@ const Create = () => {
         <div className="p-20 lg:py-10">
           <div className="">
             <UploadDropzone
-              className="bg-white text-black"
               endpoint="imageUploader"
               onClientUploadComplete={(res) => {
                 // Do something with the response
                 console.log("Files: ", res);
-                setImageUrl(res[0].url);
                 alert("Upload Completed");
               }}
               onUploadError={(error: Error) => {
@@ -26,6 +25,7 @@ const Create = () => {
                 alert(`ERROR! ${error.message}`);
               }}
             />
+            {/* <FileUpload imageUrl={setImageUrl} setImageUrl={setImageUrl} /> */}
           </div>
           <div className="mt-5">
             <div className="space-y-2 lg:grid lg:grid-cols-2 lg:gap-x-6 lg:space-y-0">
