@@ -4,6 +4,7 @@ import "./page.scss";
 import Nav from "../../../components/shared/Nav";
 import { UploadDropzone } from "../../../utils/uploadthing";
 import FileUpload from "@/components/shared/FileUpload";
+import { Button } from "@/components/ui/button";
 
 const Create = () => {
   const [imageUrl, setImageUrl] = useState<string>("");
@@ -22,12 +23,13 @@ const Create = () => {
                 setImageUrl(res[0].url);
                 alert("Upload Completed");
                 console.log(res[0].url);
-                console.log(setImageUrl);
+                console.log(imageUrl);
               }}
               onUploadError={(error: Error) => {
                 // Do something with the error.
                 alert("something went wrong");
               }}
+              // value={imageUrl}
             />
             {/* <FileUpload imageUrl={setImageUrl} setImageUrl={setImageUrl} /> */}
           </div>
@@ -38,7 +40,7 @@ const Create = () => {
                   className="p-3 w-full border outline-none rounded-lg"
                   type="text"
                   name="title"
-                  placeholder="*Post Title Here*"
+                  placeholder="Post Title Here"
                 />
               </div>
               <div className="">
@@ -64,10 +66,14 @@ const Create = () => {
           <div className="mt-5">
             <textarea
               className="p-3 w-full outline-none border rounded-lg"
+              placeholder="Write your Article Here....."
               id=""
               cols={30}
               rows={15}
             ></textarea>
+          </div>
+          <div className="mt-5">
+            <Button>Post</Button>
           </div>
         </div>
       </div>
