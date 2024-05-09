@@ -14,15 +14,19 @@ const Create = () => {
         <div className="p-20 lg:py-10">
           <div className="">
             <UploadDropzone
+              className="bg-white text-black"
               endpoint="imageUploader"
               onClientUploadComplete={(res) => {
                 // Do something with the response
                 console.log("Files: ", res);
+                setImageUrl(res[0].url);
                 alert("Upload Completed");
+                console.log(res[0].url);
+                console.log(setImageUrl);
               }}
               onUploadError={(error: Error) => {
                 // Do something with the error.
-                alert(`ERROR! ${error.message}`);
+                alert("something went wrong");
               }}
             />
             {/* <FileUpload imageUrl={setImageUrl} setImageUrl={setImageUrl} /> */}
