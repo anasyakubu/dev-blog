@@ -4,16 +4,31 @@ import "./page.scss";
 import Nav from "../../../components/shared/Nav";
 import { UploadDropzone } from "../../../utils/uploadthing";
 import { Button } from "@/components/ui/button";
-import { currentUser, useUser } from "@clerk/nextjs";
-import { toast } from "react-hot-toast";
+import { useUser } from "@clerk/nextjs";
+//import { toast } from "react-hot-toast";
 import axios from "axios";
-import { redirect } from "next/navigation";
+import { useRouter } from "next/router";
 // import { useUser } from "@clerk/nextjs";
 
 const Create = () => {
+  // const router = useRouter();
   const [imageUrl, setImageUrl] = useState<string>("");
-  // const user = currentUser();
+
   const { user } = useUser();
+
+  //console.log(user);
+  // console.log(user?.emailAddresses[0].emailAddress);
+  // console.log(user?.id[1]);
+  // console.log(user?.fullName);
+  // console.log(user?.username);
+  // console.log(user?.imageUrl);
+
+  const userID = user?.id;
+  const authorName = user?.fullName;
+  const authorUsername = user?.username;
+  const authorEmail = user?.emailAddresses[0].emailAddress;
+  const authorImage = user?.imageUrl;
+  console.log(authorImage);
 
   // datas
   const [data, setData] = useState({
@@ -22,24 +37,11 @@ const Create = () => {
     tag: "",
     articleImage: imageUrl,
     authorImage: user?.imageUrl,
-    authorName: user?.fullName,
-    authorUsername: user?.username,
-    authorEmail: user?.emailAddresses[0].emailAddress,
-    userID: user?.id,
+    authorName: authorName,
+    authorUsername: authorUsername,
+    authorEmail: authorEmail,
+    userID: userID,
   });
-
-  // console.log(user?.emailAddresses[0].emailAddress);
-  //  console.log(user.emailAddresses.emailAddress);
-  //console.log(user.lastSignInAt);
-  //console.log(user);
-  // console.log(user?.id[1]);
-  // console.log(user?.fullName);
-  // console.log(user?.username);
-  // console.log(user?.imageUrl);
-  // const userID = user?.id;
-  // const authorName = user?.fullName;
-  // const authorUsername = user?.username;
-  // const authorImage = user?.imageUrl;
 
   const handleSubmite = async (e: any) => {
     e.preventDefault();
@@ -54,6 +56,7 @@ const Create = () => {
       authorEmail,
       authorUsername,
     } = data;
+
     console.log(data);
 
     try {
@@ -69,10 +72,9 @@ const Create = () => {
         authorUsername,
       });
       if (data.error) {
-        toast.error(data.error);
+        // toast.error(data.error);
+        alert(data.error);
       } else {
-        //  setData({});
-        //  setData<String>("");
         setData({
           title: "",
           article: "",
@@ -84,8 +86,14 @@ const Create = () => {
           authorEmail: user?.emailAddresses[0].emailAddress,
           userID: user?.id,
         });
-        toast.success("Post Created Successfully");
-        redirect("/");
+        alert("Post Created Successfully");
+        // router.push("/");
+        window.location.href = "/";
+        //setData({}); // Correct way to clear the data state
+        // toast.success("Post Created Successfully");
+        // alert("Post Created Successfully");
+        // // router.push("/");
+        // window.location.href = "/";
       }
     } catch (error) {
       console.log(error);

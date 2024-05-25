@@ -27,7 +27,8 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "lib/actions/subscribers.action.js",
-    "lib/db.ts"
+    "lib/db.ts",
+    "app/Articles/Create/page.tsx"
   ],
   "exclude": ["node_modules"]
 }
