@@ -1,99 +1,77 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./page.scss";
 import Nav from "../../../components/shared/Nav";
 import { UploadDropzone } from "../../../utils/uploadthing";
 import { Button } from "@/components/ui/button";
 import { useUser } from "@clerk/nextjs";
-//import { toast } from "react-hot-toast";
 import axios from "axios";
-import { useRouter } from "next/router";
-// import { useUser } from "@clerk/nextjs";
+import { redirect } from "next/navigation";
 
-const Create = () => {
-  // const router = useRouter();
+const Create: React.FC = () => {
   const [imageUrl, setImageUrl] = useState<string>("");
-
   const { user } = useUser();
 
-  //console.log(user);
-  // console.log(user?.emailAddresses[0].emailAddress);
-  // console.log(user?.id[1]);
-  // console.log(user?.fullName);
-  // console.log(user?.username);
-  // console.log(user?.imageUrl);
+  useEffect(() => {
+    if (user) {
+      setData({
+        title: "",
+        article: "",
+        tag: "",
+        articleImage: imageUrl,
+        authorImage: user.imageUrl || "",
+        authorName: user.fullName || "",
+        authorUsername: user.username || "",
+        authorEmail: user.emailAddresses?.[0]?.emailAddress || "",
+        userID: user.id || "",
+      });
+    }
+  }, [user, imageUrl]);
 
-  const userID = user?.id;
-  const authorName = user?.fullName;
-  const authorUsername = user?.username;
-  const authorEmail = user?.emailAddresses[0].emailAddress;
-  const authorImage = user?.imageUrl;
-  console.log(authorImage);
-
-  // datas
-  const [data, setData] = useState({
+  const [data, setData] = useState<{
+    title: string;
+    article: string;
+    tag: string;
+    articleImage: string;
+    authorImage: string;
+    authorName: string;
+    authorUsername: string;
+    authorEmail: string;
+    userID: string;
+  }>({
     title: "",
     article: "",
     tag: "",
     articleImage: imageUrl,
-    authorImage: user?.imageUrl,
-    authorName: authorName,
-    authorUsername: authorUsername,
-    authorEmail: authorEmail,
-    userID: userID,
+    authorImage: "",
+    authorName: "",
+    authorUsername: "",
+    authorEmail: "",
+    userID: "",
   });
 
-  const handleSubmite = async (e: any) => {
+  const handleSubmite = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const {
-      title,
-      article,
-      tag,
-      articleImage,
-      userID,
-      authorImage,
-      authorName,
-      authorEmail,
-      authorUsername,
-    } = data;
-
-    console.log(data);
 
     try {
-      const { data } = await axios.post("http://localhost:9000/createArticle", {
-        title,
-        article,
-        tag,
-        articleImage,
-        userID,
-        authorImage,
-        authorName,
-        authorEmail,
-        authorUsername,
-      });
-      if (data.error) {
-        // toast.error(data.error);
-        alert(data.error);
+      const response = await axios.post(
+        "http://localhost:9000/createArticle",
+        data
+      );
+      console.log(response.data);
+      if (response.data.error) {
+        alert(response.data.error);
       } else {
         setData({
+          ...data,
           title: "",
           article: "",
           tag: "",
-          articleImage: imageUrl,
-          authorImage: user?.imageUrl,
-          authorName: user?.fullName,
-          authorUsername: user?.username,
-          authorEmail: user?.emailAddresses[0].emailAddress,
-          userID: user?.id,
+          articleImage: "",
         });
         alert("Post Created Successfully");
-        // router.push("/");
-        window.location.href = "/";
-        //setData({}); // Correct way to clear the data state
-        // toast.success("Post Created Successfully");
-        // alert("Post Created Successfully");
-        // // router.push("/");
-        // window.location.href = "/";
+        // revalidatePath("/");
+        redirect("/");
       }
     } catch (error) {
       console.log(error);
@@ -115,20 +93,13 @@ const Create = () => {
                 className="bg-white text-black"
                 endpoint="imageUploader"
                 onClientUploadComplete={(res) => {
-                  // Do something with the response
-                  console.log("Files: ", res);
                   setImageUrl(res[0].url);
                   alert("Upload Completed");
-                  console.log(res[0].url);
-                  console.log(imageUrl);
                 }}
                 onUploadError={(error: Error) => {
-                  // Do something with the error.
-                  alert("something went wrong");
+                  alert("Something went wrong");
                 }}
-                // value={imageUrl}
               />
-              {/* <FileUpload imageUrl={setImageUrl} setImageUrl={setImageUrl} /> */}
               <input type="hidden" value={imageUrl} name={imageUrl} />
             </div>
             <div className="mt-5">
@@ -146,22 +117,14 @@ const Create = () => {
                   />
                 </div>
                 <div className="">
-                  <select
+                  <input
                     className="p-3 w-full border outline-none rounded-lg"
-                    name="tag"
+                    type="text"
+                    name="title"
+                    placeholder="Post Title Here"
                     value={data.tag}
                     onChange={(e) => setData({ ...data, tag: e.target.value })}
-                  >
-                    <option selected>Select a tag</option>
-                    <option>Engineering</option>
-                    <option>Software Development</option>
-                    <option>Software Engineer</option>
-                    <option>Web Design</option>
-                    <option>Web Development</option>
-                    <option>Coding</option>
-                    <option>Languages</option>
-                    <option>Cloud Engineering</option>
-                  </select>
+                  />
                 </div>
               </div>
             </div>

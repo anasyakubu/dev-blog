@@ -1,11 +1,40 @@
-import React from "react";
+"use client";
+import React, { useState, useEffect } from "react";
 import "./BlogList.scss";
 import BlogListCard from "../../../components/shared/BlogListCard";
-import { Button } from "../../../components/ui/button";
-import Link from "next/link";
-import "./BlogList.scss";
+import { useUser } from "@clerk/nextjs";
+import axios from "axios";
 
-const BlogList = () => {
+interface Post {
+  id: string;
+  title: string;
+  tag: string;
+  article: string;
+  articleImage: string;
+  authorImage: string;
+  authorName: string;
+  authorUsername: string;
+  createdAt: string;
+}
+
+const BlogList: React.FC = () => {
+  const { user } = useUser();
+  const [posts, setPosts] = useState<Post[]>([]);
+
+  useEffect(() => {
+    axios
+      .get<Post[]>("http://localhost:9000/articleList")
+      .then((result) => {
+        console.log(result);
+        const fetchPost = result.data
+          .filter((post) => post.userID === user.id)
+          .reverse();
+        console.log(fetchPost);
+        setPosts(fetchPost);
+      })
+      .catch((err) => console.log(err));
+  }, [user]);
+
   return (
     <div className="BlogList">
       <div className="p-20 lg:py-10">
@@ -13,16 +42,20 @@ const BlogList = () => {
           <h6 className="text-[#2563EB] text-2xl font-bold">All Post</h6>
         </div>
         <div className="mt-10">
-          <BlogListCard />
-          <BlogListCard />
-          <BlogListCard />
-          <BlogListCard />
-          <BlogListCard />
-        </div>
-        <div className="mt-20 flex justify-center">
-          <Button>
-            <Link href="/Articles">View all Post</Link>
-          </Button>
+          {posts.map((post) => (
+            <BlogListCard
+              key={post.id}
+              id={post.id}
+              title={post.title}
+              tag={post.tag}
+              post={post.article}
+              articleImage={post.articleImage}
+              authorImage={post.authorImage}
+              authorName={post.authorName}
+              authorUsername={post.authorUsername}
+              createdAt={post.createdAt}
+            />
+          ))}
         </div>
       </div>
     </div>

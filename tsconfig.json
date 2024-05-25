@@ -28,7 +28,8 @@
     ".next/types/**/*.ts",
     "lib/actions/subscribers.action.js",
     "lib/db.ts",
-    "app/Articles/Create/page.tsx"
+    "app/Articles/Create/page.tsx",
+    "app/sections/BlogList/BlogList.tsx"
   ],
   "exclude": ["node_modules"]
 }

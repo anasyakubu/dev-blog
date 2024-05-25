@@ -5,7 +5,17 @@ import BlogImage from "../../app/assets/starter-code.png";
 import User from "../../app/assets/user-1.jpg";
 import Link from "next/link";
 
-const BlogListCard = ({ id }: any) => {
+const BlogListCard = ({
+  id,
+  title,
+  post,
+  tag,
+  articleImage,
+  authorImage,
+  authorName,
+  authorUsername,
+  createdAt,
+}: any) => {
   return (
     <div className="BlogListCard">
       <div className="mt-20">
@@ -14,26 +24,14 @@ const BlogListCard = ({ id }: any) => {
           <div className="">
             <div className="">
               <h6 className="text-sm font-bold text-[#2563EB]">
-                <Link href={`/Articles/${id}`}>Engineering</Link>
+                <Link href={`/Articles/${id}`}>{tag}</Link>
               </h6>
               <h2 className="mt-5 text-black font-extrabold text-2xl">
-                <Link href={`/Articles/${id}`}>
-                  Shepherd: How Stripe adapted Chronon to scale ML feature
-                  development
-                </Link>
+                <Link href={`/Articles/${id}`}>{title}</Link>
               </h2>
 
               <p className="mt-10 text-sm">
-                <Link href={`/Articles/${id}`}>
-                  Today, the most innovative changes in marketplaces are about
-                  providing more value to sellers. Many of them hinge on the
-                  kind of financial infrastructure Stripe provides. We’ve found
-                  leading marketplaces increasingly ask us to support them with
-                  three main types of incentives for sellers: access to a global
-                  customer base, an easy onboarding experience, and financial
-                  tools like loans and spend cards available in the marketplace
-                  dashboard.
-                </Link>
+                <Link href={`/Articles/${id}`}>{post}</Link>
               </p>
               <div className="mt-10">
                 <Button>
@@ -46,17 +44,17 @@ const BlogListCard = ({ id }: any) => {
           <div className="my-10">
             {/*  */}
             <div className="">
-              <p>April 15, 2024</p>
+              <p>{createdAt}</p>
               <div className="mt-5 flex gap-5">
                 <Image
                   className="w-12 h-12 rounded-full"
-                  src={User}
+                  src={authorImage}
                   alt="User"
                 />
                 <span className="text-md font-bold">
                   <Link href={`/Articles/${id}`}>
-                    Anas Yakubu <br />{" "}
-                    <span className="font-light">Software Engineer</span>
+                    {authorName} <br />{" "}
+                    <span className="font-light">{authorUsername}</span>
                   </Link>
                 </span>
               </div>
@@ -65,7 +63,7 @@ const BlogListCard = ({ id }: any) => {
             <div className="mt-12">
               <Image
                 className="rounded-xl shadow-2xl"
-                src={BlogImage}
+                src={articleImage}
                 alt="Blog Image"
               />
             </div>
