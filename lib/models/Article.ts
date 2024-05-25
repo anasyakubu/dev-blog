@@ -18,6 +18,18 @@ const ArticleSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    userID: {
+      type: String,
+      // required: true,
+    },
+    authorImage: {
+      type: String,
+      // required: true,
+    },
+    authorUsername: {
+      type: String,
+      // required: true,
+    },
   },
   { timestamps: true }
 );

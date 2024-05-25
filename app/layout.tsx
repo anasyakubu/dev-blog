@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { ClerkLoaded, ClerkLoading, ClerkProvider } from "@clerk/nextjs";
-import { Toaster } from "@/components/ui/sonner";
+// import { Toaster } from "@/components/ui/sonner";
+import { Toaster } from "react-hot-toast";
 import "./globals.css";
 import "@uploadthing/react/styles.css";
 
@@ -19,6 +20,7 @@ export default function RootLayout({
 }>) {
   return (
     <ClerkProvider>
+      <Toaster position="top-center" toastOptions={{ duration: 2000 }} />
       <html lang="en">
         <body className={inter.className}>{children}</body>
         <Toaster />
