@@ -84,9 +84,9 @@ const Create: React.FC = () => {
         <Nav />
         <div className="p-20 lg:py-10">
           <form onSubmit={handleSubmite}>
-            <h1 className="p-3 w-full border outline-none rounded-lg">
+            {/* <h1 className="p-3 w-full border outline-none rounded-lg">
               {imageUrl}
-            </h1>
+            </h1> */}
 
             <div className="">
               <UploadDropzone

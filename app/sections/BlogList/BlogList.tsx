@@ -6,7 +6,7 @@ import { useUser } from "@clerk/nextjs";
 import axios from "axios";
 
 interface Post {
-  id: string;
+  _id: string;
   title: string;
   tag: string;
   article: string;
@@ -19,6 +19,7 @@ interface Post {
 
 const BlogList: React.FC = () => {
   const { user } = useUser();
+  const userID = user?.id;
   const [posts, setPosts] = useState<Post[]>([]);
 
   useEffect(() => {
@@ -26,10 +27,8 @@ const BlogList: React.FC = () => {
       .get<Post[]>("http://localhost:9000/articleList")
       .then((result) => {
         console.log(result);
-        const fetchPost = result.data
-          .filter((post) => post.userID === user.id)
-          .reverse();
-        console.log(fetchPost);
+        const fetchPost = result.data.reverse();
+        console.log(userID);
         setPosts(fetchPost);
       })
       .catch((err) => console.log(err));
@@ -44,8 +43,8 @@ const BlogList: React.FC = () => {
         <div className="mt-10">
           {posts.map((post) => (
             <BlogListCard
-              key={post.id}
-              id={post.id}
+              key={post._id}
+              id={post._id}
               title={post.title}
               tag={post.tag}
               post={post.article}

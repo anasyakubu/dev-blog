@@ -50,6 +50,8 @@ const BlogListCard = ({
                   className="w-12 h-12 rounded-full"
                   src={authorImage}
                   alt="User"
+                  width="12"
+                  height="12"
                 />
                 <span className="text-md font-bold">
                   <Link href={`/Articles/${id}`}>
@@ -62,9 +64,11 @@ const BlogListCard = ({
             {/*  */}
             <div className="mt-12">
               <Image
-                className="rounded-xl shadow-2xl"
+                className="rounded-xl shadow-2xl w-full"
                 src={articleImage}
                 alt="Blog Image"
+                width="100"
+                height="100"
               />
             </div>
           </div>
